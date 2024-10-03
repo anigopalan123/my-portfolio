@@ -5,7 +5,6 @@
     box-sizing: border-box;
 }
 
-
 body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
@@ -13,33 +12,13 @@ body {
     background-color: #f4f4f4;
     color: #333;
     transition: background-color 0.3s ease;
-    position: relative; /* Ensures that the theme overlay covers the entire body */
 }
-
-/* Add the background overlay */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2)), url('background-theme.png') no-repeat center center fixed;
-    background-size: cover;
-    z-index: -1;
-    pointer-events: none; /* Ensures the theme doesn’t interfere with the content */
-}
-
 
 header {
     background-color: #333;
     padding: 20px 0;
     color: white;
     text-align: center;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 999;
 }
 
 nav ul {
@@ -64,23 +43,37 @@ nav ul li a:hover {
     color: #ff6347;
 }
 
-section {
-    padding: 100px 50px 50px;
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
 /* Hero Section */
 .hero {
-    height: 100vh; /* Full viewport height */
+    position: relative; /* Ensures the overlay stays within the hero section */
+    height: 100vh;
     text-align: center;
     padding: 150px 0;
-    background: linear-gradient(135deg, #ea9d66, #a29b4b);
+    background: url('background-theme.jpg') no-repeat center center fixed; /* Background theme image */
+    background-size: cover;
     color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+/* Adding the theme overlay */
+.theme-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay for better contrast */
+    z-index: 1;
+}
+
+.hero h1,
+.hero p,
+.hero img,
+.hero .cta-button {
+    z-index: 2; /* Content stays above the overlay */
 }
 
 .hero h1 {
@@ -98,16 +91,16 @@ section {
     animation: fadeInUp 1.5s ease forwards;
 }
 
-/* Image styling, moved it further down by increasing margin-top */
+/* Image styling */
 .hero img {
     max-width: 300px;
     border-radius: 15px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    margin-top: 40px; /* Increased margin-top to move the image further down */
-    margin-bottom: 20px; /* Space between image and button */
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 
-/* Centered Button below the image */
+/* Centered Button */
 .hero .cta-button {
     padding: 15px 30px;
     background-color: #ff6347;
@@ -141,9 +134,6 @@ section {
     justify-content: center;
     gap: 20px;
     padding: 50px 0;
-    opacity: 0;
-    transform: translateY(50px);
-    animation: fadeInUp 2.5s ease forwards;
 }
 
 .skill-item {
@@ -154,13 +144,21 @@ section {
     text-align: center;
     width: 150px;
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .skill-item:hover {
     transform: translateY(-10px);
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
 }
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
 
 /* About Section */
 .about {
