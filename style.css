@@ -49,7 +49,7 @@ nav ul li a:hover {
     height: 100vh;
     text-align: center;
     padding: 150px 0;
-    background: url('background-theme.jpg') no-repeat center center fixed; /* Background theme image */
+    background: url('Tech') no-repeat center center fixed; /* Background theme image */
     background-size: cover;
     color: white;
     display: flex;
